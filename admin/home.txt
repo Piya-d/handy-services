@@ -1,0 +1,97 @@
+<?php
+session_start();
+
+?>
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Calm breeze login screen</title>
+    
+      <link rel="stylesheet" href="css/style.css">
+
+      
+</head>
+
+<body>
+  <div class="wrapper">
+	<div class="container">
+		<h1>Welcome</h1>
+		<form method="post" class="form"  action="">
+			<input type="text" name="user" placeholder="Username">
+			<input type="password" name="pass"  placeholder="Password">
+			<input type="submit" name="login" value="Login">
+		</form>
+	</div>
+	</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</body>
+</html>
+<?php
+include("includes/connect.php");
+
+if(isset($_POST['login'])) {
+
+	$user = mysql_real_escape_string($_POST['user']);
+	$pass = mysql_real_escape_string($_POST['pass']);
+	$admin_query = "select * from admin where user = '$user' AND pass = '$pass'";
+	$run= mysql_query($admin_query);
+
+	if(mysql_num_rows($run)>0) {
+		$_SESSION['user'] = $user;
+		echo "<script>window.open('tmhome.php','_self')</script>";
+	}
+	else {
+		echo"<script>alert('User name or password is incorrect ')</script>";
+	}
+	
+}
+?><?php
+session_start();
+
+?>
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Calm breeze login screen</title>
+    
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div class="wrapper">
+	<div class="container">
+		<h1>Welcome</h1>
+		<form method="post" class="form"  action="">
+			<input type="text" name="user" placeholder="Username">
+			<input type="password" name="pass"  placeholder="Password">
+			<input type="submit" name="login" value="Login">
+		</form>
+	</div>
+	</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</body>
+</html>
+<?php
+include("includes/connect.php");
+
+if(isset($_POST['login'])) {
+
+	$user = mysql_real_escape_string($_POST['user']);
+	$pass = mysql_real_escape_string($_POST['pass']);
+	$admin_query = "select * from admin where user = '$user' AND pass = '$pass'";
+	$run= mysql_query($admin_query);
+
+	if(mysql_num_rows($run)>0) {
+		$_SESSION['user'] = $user;
+		echo "<script>window.open('tmhome.php','_self')</script>";
+	}
+	else {
+		echo"<script>alert('User name or password is incorrect ')</script>";
+	}
+	
+}
+?>
